@@ -3,9 +3,9 @@
     <v-card class="mx-auto" height="auto" align="center"></v-card>
 
     <v-card class="mx-auto overflow-hidden" height="auto">
-      <v-toolbar color="grey accent-4" dark>
+      <v-toolbar color="#228b22" dark>
         <v-text-field
-          label="Luxury shop search"
+          label="Taejinimall search"
           hide-details
           single-line
           v-model="productName"

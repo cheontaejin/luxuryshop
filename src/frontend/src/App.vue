@@ -1,14 +1,21 @@
 <template>
   <v-app>
     <div>
-      <v-app-bar color="black accent-4" dense dark height="80">
+      <!-- 상단 bar -->
+      <v-app-bar color="#00fa9a" dense dark height="60">
+        <!-- 좌측 상단 네비게이션 아이콘 -->
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-        <v-toolbar-title>Luxury Shop</v-toolbar-title>
+        <v-toolbar-title>Taejinimall</v-toolbar-title>
+        <!-- 빈 공간 아이콘을 우측 끝으로 이동하기 위해 -->
         <v-spacer></v-spacer>
+        <!-- 아이콘을 버튼으로 지정 to -> router의 Search와 연결 -->
         <v-btn icon :to="{ name: 'Search' }">
+          <!-- mdi- 붙여서 쓰면 따로 설정안해도 아이콘 가져다 쓸 수 있음 -->
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
+        <!-- 아이콘을 버튼으로 지정 to -> router의 Cart와 연결 -->
         <v-btn icon :to="{ name: 'Cart' }">
+          <!-- mdi- 붙여서 쓰면 따로 설정안해도 아이콘 가져다 쓸 수 있음 -->
           <v-icon>mdi-cart</v-icon>
         </v-btn>
 
@@ -32,10 +39,13 @@
           </v-list>
         </v-menu>
       </v-app-bar>
+      <!-- 네비게이션 아이콘 클릭시 동작 부분 -->
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list-item>
+          <!-- 아이콘의 원본 이미지를 변경하지 않고 항목에 가장 적합한 모양의 디자인으로 바꿔서 표현해줌 -->
           <v-list-item-avatar>
-            <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
+            <!-- mdi- 붙여서 쓰면 따로 설정안해도 아이콘 가져다 쓸 수 있음 -->
+            <v-icon>mdi-account</v-icon>
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -44,7 +54,7 @@
             }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-
+        <!-- 구분선 -->
         <v-divider></v-divider>
         <v-list dense>
           <v-list-item :to="{ name: 'Main' }">
