@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "../store/modules/users";
 
+/* 명시적으로 router를 추가해야 사용 가능 */
 Vue.use(VueRouter);
 const Empty = () => import("../components/Empty.vue")
 const DetailProduct = () => import("../views/DetailProduct.vue");
@@ -19,8 +20,10 @@ const AdminProductUpdate = () => import("../views/admin/product/AdminProductUpda
 const Payment=()=> import("../views/Payment.vue")
 const routes = [
     {
+        /* path: url에 대한 정보 */
         path: "/",
         name: "Main",
+        /* component: url 주소로 갔을 때 표시될 컴포넌트 */
         component: Main
     },
     {
@@ -101,11 +104,12 @@ const routes = [
     },
 ];
 const router = new VueRouter({
-    mode: "history",
+    mode: "history",    //mode: "history"는 localhost뒤에 /#/을 삭제해주는 역할
     base: process.env.BASE_URL,
     routes
 });
 
+/* router.beforeEach를 사용해서 모든 라우터 객체에 가드를 적용합니다. */
 router.beforeEach(function (to, from, next) {
     if (to.matched.some(routeInfo => routeInfo.meta.authRequired)) {
         if (store.state.jwt === null) {

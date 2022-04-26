@@ -3,6 +3,7 @@ import axios from "axios";
 const config = {
     baseUrl: "/api/users/"
 };
+/* 해당 데이터를 저장해 사용할 수 있도록 만듬 자바의 변수 선언 정도로 이해함 */
 const state = {
     jwt: null,
     id: null,
@@ -10,6 +11,7 @@ const state = {
     nickname: "로그인하세요.",
     userList: []
 };
+/* 데이터를 다루는 함수등을 작성 */
 const mutations = {
     setJwt: (state, jwt) => {
         state.jwt = jwt;
@@ -31,7 +33,7 @@ const mutations = {
         state.nickname = "로그인하세요.";
     }
 };
-
+/* api에서 데이터를 받아오는 역할 */
 const actions = {
     async login({state, commit}, userSignupDto) {
         let isSuccess = true;
