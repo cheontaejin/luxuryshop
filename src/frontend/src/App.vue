@@ -94,7 +94,7 @@
     <v-main>
       <!-- 중앙 중심의 페이지에 fluid = 전체 너비를 이용 -->
       <v-container fluid>
-        <!-- vue-router 사용 -->
+        <!-- vue-router 사용 router로 이동한 url을 뿌려주는 곳 -->
         <router-view></router-view>
       </v-container>
     </v-main>
