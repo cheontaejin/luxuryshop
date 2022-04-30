@@ -112,6 +112,7 @@ const router = new VueRouter({
 /* router.beforeEach를 사용해서 모든 라우터 객체에 가드를 적용합니다. */
 router.beforeEach(function (to, from, next) {
     if (to.matched.some(routeInfo => routeInfo.meta.authRequired)) {
+        /* === : Identity, 일치 연산자로, 형 변환을 하지 않고 두 피 연산자를 더 정확하게 비교한다. */
         if (store.state.jwt === null) {
             window.alert('로그인이 필요합니다.');
         } else {

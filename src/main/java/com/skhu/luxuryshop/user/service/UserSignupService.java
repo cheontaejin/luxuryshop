@@ -22,6 +22,7 @@ public class UserSignupService {
     private final UserAuthorityRepository userAuthorityRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
+    /* @Transactional이 적용된 범위에서 트랜잭션 기능이 포함된 프록시 객체가 생성되어 자동으로 commit 또는 rollback을 진행해준다. */
     @Transactional
     public UserResponseDto save(UserSignupDto userSignupDto) throws Exception {
         if (!validateDuplicatedEmail(userSignupDto.getEmail())) {

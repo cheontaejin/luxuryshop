@@ -106,6 +106,7 @@ import { getSearchTitle } from "@/api/search";
 import HelloWorld from "./components/HelloWorld";
 import {mapActions} from "vuex";
 
+/* export default는 다른 파일에 있는 내용을 참조해 오기 위한 방식이다. */
 export default {
   name: "App",
 
@@ -124,7 +125,9 @@ export default {
       { title: "Mypage", icon: "mdi-forum" }
     ]
   }),
+  /* template 내부에 선언된 method 중에서 update 라이프 사이클이 동작한(=아무 변수나 바뀌면)다면 화면에 붙어 있는 함수를 모두 실행한다. */
   methods: {
+    /* mapActions = vuex에 담긴 action 중에 logout을 가져다 쓰겠다. */
     ...mapActions({logout: 'users/logout'}),
     async logoutUser() {
       if (await this.logout()) {
@@ -132,9 +135,12 @@ export default {
       }
     }
   },
+  /* computed는 계산된 값을 캐시 해 두었다가 함수 호출 시 다시 쓰게 됨
+  * template 내부에 선언된 computed 중에서 해당 함수와 연결 된 값ㅅ이 바뀔 때만 해당 함수 만을 실행한다. */
   computed: {
     isLogin() {
       return (
+          /* == : Equality, 동등 연산자로, 피 연산자가 서로 다른 타입 이면 타입을 강제로 변환하여 비교한다. */
         this.$store.state.users.jwt != undefined ||
         this.$store.state.users.jwt == ""
       );

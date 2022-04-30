@@ -14,7 +14,9 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserSignupDto {
+    /* @NotBlank = null이 아닌 값이다, 공백이 아닌 문자를 하나 이상 포함한다. */
     @NotBlank(message = "이메일을 입력하세요.")
+    /* @Email =  이메일 형식인지 확인한다. */
     @Email(message = "이메일 형식을 확인하세요.")
     private String email;
 
