@@ -136,7 +136,7 @@ export default {
     }
   },
   /* computed는 계산된 값을 캐시 해 두었다가 함수 호출 시 다시 쓰게 됨
-  * template 내부에 선언된 computed 중에서 해당 함수와 연결 된 값ㅅ이 바뀔 때만 해당 함수 만을 실행한다. */
+  * template 내부에 선언된 computed 중에서 해당 함수와 연결 된 값이 바뀔 때만 해당 함수 만을 실행한다. */
   computed: {
     isLogin() {
       return (
