@@ -4,6 +4,7 @@ import store from "../store/modules/users";
 
 /* 명시적으로 router를 추가해야 사용 가능 */
 Vue.use(VueRouter);
+/* 필요한 시점에 불러와서 사용할 수 있게 Lazy Loading 적용 */
 const Empty = () => import("../components/Empty.vue")
 const DetailProduct = () => import("../views/DetailProduct.vue");
 const Mypage = () => import("../views/Mypage.vue");

@@ -27,6 +27,8 @@ public class TokenProvider implements InitializingBean {
     private Key key;
 
     public TokenProvider(
+            /* @Value("${jwt.secret}") =  application.properties에 설정된 값을 가지고 오기 */
+            /* secret = token 체크시 필요한 암호키 */
             @Value("${jwt.secret}") String secret,
             @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds) {
         this.secret = secret;
@@ -44,6 +46,7 @@ public class TokenProvider implements InitializingBean {
         for (UserAuthority userAuthority : user.getAuthorities()) {
             userAuthorities.add(userAuthority.getAuth());
         }
+        /* userAuthorities 리스트에 담긴 모든 아이템을 하나의 String으로 ", "를 넣어 구분해서 만든다. */
         String authorities = userAuthorities.stream()
                 .map(Authority::getAuthorityName)
                 .collect(Collectors.joining(AUTHORITIES_SPLITTER));
@@ -52,13 +55,14 @@ public class TokenProvider implements InitializingBean {
         Date validity = new Date(now + this.tokenValidityInMilliseconds);
 
         return Jwts.builder()
-                .setSubject(user.getEmail())
-                .claim(AUTHORITIES_KEY, authorities)
-                .signWith(key, SignatureAlgorithm.HS512)
-                .setExpiration(validity)
+                .setSubject(user.getEmail())    // 제목
+                .claim(AUTHORITIES_KEY, authorities)    // playload 부분에 들어갈 정보
+                .signWith(key, SignatureAlgorithm.HS512)    //
+                .setExpiration(validity)    // 만료일
                 .compact();
     }
 
+    /* 토큰 유효성, 만료일자 검증 */
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);

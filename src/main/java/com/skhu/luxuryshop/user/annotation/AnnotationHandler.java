@@ -9,6 +9,7 @@ public class AnnotationHandler {
                 return true;
             }
         }
+        /* 예외 발생시 "접근 권한이 없습니다." */
         throw new FailToAuthenticationException();
     }
 
