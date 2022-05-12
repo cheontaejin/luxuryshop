@@ -92,7 +92,7 @@ export default {
       payAddress: null,
       payPhoneNumber: "010-1111-1111",
       deliveryMessage: "",
-      impCode: "imp38067213",
+      impCode: "imp37234286",
       payCheck: false
     };
   },
